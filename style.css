@@ -1,0 +1,95 @@
+/* --- General Styling & Layout --- */
+:root {
+    --background-dark: #1a1a1a;
+    --background-light: #222831;
+    --primary-cyan: #00FFF5;
+    --primary-pink: #FF2E63;
+    --text-light: #EEEEEE;
+    --text-dark: #1a1a1a;
+    --border-cyan-light: rgba(0, 255, 245, 0.3);
+    --border-cyan-medium: rgba(0, 255, 245, 0.4);
+    --shadow-cyan-light: rgba(0, 255, 245, 0.2);
+    --shadow-cyan-strong: rgba(0, 255, 245, 0.7);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    line-height: 1.5;
+    padding: 1rem;
+}
+.hidden { display: none !important; }
+
+/* --- Start Screen --- */
+#modeSelectionScreen { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 700px; }
+.main-game-title { font-size: 2.8rem; color: var(--primary-cyan); text-shadow: 0 0 8px var(--primary-cyan), 0 0 15px var(--primary-cyan), 0 0 20px var(--primary-pink), 0 0 25px var(--primary-pink); margin-bottom: 1.5rem; letter-spacing: 0.08em; line-height: 1.2; text-align: center; }
+#modeButtonContainer { margin-bottom: 2.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.mode-button { font-family: inherit; background-color: var(--background-light); color: var(--primary-cyan); border: 2px solid var(--primary-cyan); border-radius: 0.375rem; padding: 0.75rem 1.25rem; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s; box-shadow: 0 0 8px var(--border-cyan-medium), 0 0 15px var(--shadow-cyan-light); text-shadow: 0 0 3px var(--shadow-cyan-strong); cursor: pointer; min-width: 200px; font-size: 1.1rem; }
+.mode-button:hover { background-color: var(--primary-cyan); color: var(--text-dark); box-shadow: 0 0 15px var(--shadow-cyan-strong), 0 0 25px rgba(0, 255, 245, 0.5); text-shadow: none; transform: translateY(-1px); }
+.mode-button:active { background-color: #00A8A0 !important; color: var(--text-dark) !important; transform: translateY(1px); }
+
+/* --- Highscore Display --- */
+#highscoreColumnsContainer { display: flex; flex-direction: row; justify-content: space-around; align-items: flex-start; width: 100%; gap: 1.5rem; flex-wrap: wrap; }
+.highscore-section { width: calc(50% - 0.75rem); min-width: 260px; max-width: 320px; background-color: rgba(34, 40, 49, 0.7); border: 2px solid var(--primary-cyan); border-radius: 8px; padding: 1rem; box-shadow: 0 0 10px var(--border-cyan-light); flex-grow: 1; }
+@media (max-width: 600px) { #highscoreColumnsContainer { flex-direction: column; align-items: center; } .highscore-section { width: 100%; max-width: 400px; margin-bottom: 1rem; } }
+.highscore-section h3 { font-size: 1.1rem; color: var(--primary-pink); text-shadow: 0 0 4px var(--primary-pink); margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-cyan-light); padding-bottom: 0.25rem; text-align: center; }
+.highscore-list { list-style: none; padding: 0; max-height: 130px; overflow-y: auto; }
+.highscore-list li { padding: 0.25rem 0.2rem; font-size: 0.9rem; display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(0, 255, 245, 0.1); }
+.highscore-list li:last-child { border-bottom: none; }
+.highscore-list .player-rank { color: #FFD700; margin-right: 0.5em; min-width: 1.8em; text-align: right; flex-shrink: 0; }
+.highscore-list .player-name { color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; text-align: left; margin-right: 0.5em; }
+.highscore-list .player-score { color: var(--primary-cyan); font-weight: bold; flex-shrink: 0; }
+.highscore-list::-webkit-scrollbar { width: 8px; }
+.highscore-list::-webkit-scrollbar-track { background: rgba(34, 40, 49, 0.5); border-radius: 10px; }
+.highscore-list::-webkit-scrollbar-thumb { background: var(--primary-cyan); border-radius: 10px; }
+.highscore-list::-webkit-scrollbar-thumb:hover { background: #00A8A0; }
+
+/* --- Game UI --- */
+#gameUI { display: flex; width: 100%; flex-direction: column; align-items: center; }
+#gameUI h1 { color: var(--primary-cyan); text-shadow: 0 0 5px var(--primary-cyan), 0 0 10px var(--primary-cyan), 0 0 15px var(--primary-cyan); padding: 0.25rem 0.5rem; border-radius: 0.375rem; display: inline-block; margin-bottom: 1rem; font-size: 2.25rem; text-align: center; }
+.info-bar { display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%; max-width: 64rem; margin-bottom: 1rem; font-size: 1.125rem; padding-left: 0.5rem; padding-right: 0.5rem; gap: 0.5rem; }
+.info-bar > div { background-color: rgba(34, 40, 49, 0.85); color: var(--text-light); padding: 0.5rem 0.75rem; border-radius: 0.375rem; border: 1px solid var(--shadow-cyan-light); box-shadow: 0 0 8px var(--shadow-cyan-light); flex-grow: 1; text-align: center; }
+@media (min-width: 640px) { .info-bar > div { text-align: left; } }
+#taskValue { color: var(--primary-cyan); font-weight: bold; }
+#scoreValue { color: var(--primary-pink); font-weight: bold; }
+#gameArea { display: flex; align-items: center; justify-content: center; gap: 2rem; width: 100%; max-width: 80rem; padding-left: 0.5rem; padding-right: 0.5rem; flex-direction: column; }
+@media (min-width: 768px) { #gameArea { flex-direction: row; align-items: flex-start; } }
+#canvasContainer { border: 3px solid var(--primary-cyan); box-shadow: 0 0 15px var(--border-cyan-medium), 0 0 30px var(--border-cyan-light), 0 0 8px rgba(255, 46, 99, 0.25) inset; border-radius: 10px; overflow: hidden; background-color: var(--background-light); width: 100%; max-width: 48rem; flex-shrink: 0; position: relative; }
+canvas { background-color: var(--background-light) !important; display: block; border-radius: 7px; }
+
+/* --- Game Over Screen --- */
+#gameOverScreen { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; background-color: rgba(10, 10, 15, 0.88); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 50; border-radius: 8px; }
+#gameOverScreen h2 { font-size: 2.25rem; margin-bottom: 1rem; color: #FF4747; text-shadow: 0 0 6px #FF4747, 0 0 12px #FF4747; }
+#gameOverScreen p { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-light); }
+#gameOverScreen #finalScore { color: var(--primary-pink); font-weight: bold; text-shadow: 0 0 4px var(--primary-pink); }
+.restart-button { font-family: inherit; background-color: var(--background-light); color: var(--primary-cyan); border: 2px solid var(--primary-cyan); border-radius: 0.375rem; padding: 0.75rem 1.5rem; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s; box-shadow: 0 0 8px var(--border-cyan-medium), 0 0 15px var(--shadow-cyan-light); text-shadow: 0 0 3px var(--shadow-cyan-strong); cursor: pointer; }
+.restart-button:hover { background-color: var(--primary-cyan); color: var(--text-dark); box-shadow: 0 0 15px var(--shadow-cyan-strong), 0 0 25px rgba(0, 255, 245, 0.5); text-shadow: none; transform: translateY(-1px); }
+.restart-button:active { background-color: #00A8A0 !important; color: var(--text-dark) !important; transform: translateY(1px); }
+
+/* --- Controls & Timer --- */
+#controlsAndTimerContainer { display: flex; flex-direction: column; align-items: center; margin-top: 1rem; gap: 1rem; }
+@media (min-width: 768px) { #controlsAndTimerContainer { margin-top: 0; } }
+#touchControls { display: grid; grid-template-columns: repeat(3, 50px); grid-template-rows: repeat(3, 50px); gap: 2px; width: auto; height: auto; background-color: rgba(0, 255, 245, 0.1); padding: 5px; border-radius: 10px; box-shadow: 0 0 10px var(--border-cyan-light); }
+#touchControls button { font-family: inherit; background-color: var(--background-light); color: var(--primary-cyan); border: 1px solid #00A8A0; display: flex; justify-content: center; align-items: center; padding: 0; margin: 0; line-height: 1; cursor: pointer; transition: background-color 0.2s, color 0.2s, transform 0.1s; text-shadow: 0 0 3px var(--shadow-cyan-strong); -webkit-tap-highlight-color: transparent; }
+#touchControls button:hover { background-color: var(--primary-cyan); color: var(--text-dark); text-shadow: none; transform: scale(1.05); }
+#touchControls button:active { background-color: #00A8A0 !important; color: var(--text-dark) !important; transform: scale(0.95); }
+#btnUp { grid-column: 2; grid-row: 1; border-radius: 6px 6px 0 0; }
+#btnLeft { grid-column: 1; grid-row: 2; border-radius: 6px 0 0 6px; }
+#btnCenter { grid-column: 2; grid-row: 2; background-color: rgba(0, 255, 245, 0.15); border: 1px solid var(--border-cyan-light); pointer-events: none; }
+#btnRight { grid-column: 3; grid-row: 2; border-radius: 0 6px 6px 0; }
+#btnDown { grid-column: 2; grid-row: 3; border-radius: 0 0 6px 6px; }
+#touchControls button svg { width: 1.8rem; height: 1.8rem; fill: currentColor; }
+#countdownContainer { background-color: rgba(34, 40, 49, 0.85); color: var(--text-light); padding: 0.5rem 0.75rem; border-radius: 0.375rem; border: 1px solid var(--shadow-cyan-light); box-shadow: 0 0 8px var(--shadow-cyan-light); width: auto; min-width: 200px; text-align: center; }
+#countdownTimer { color: var(--primary-pink); font-weight: bold; text-shadow: 0 0 3px var(--primary-pink); }
+
+/* --- Text Formatting --- */
+sub, sup { font-size: 0.7em; vertical-align: baseline; position: relative; }
+sub { top: 0.3em; color: var(--primary-cyan); }
+sup { top: -0.3em; color: var(--primary-cyan); }

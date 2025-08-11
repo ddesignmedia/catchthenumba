@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the NUMBA (Online)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="modeSelectionScreen">
+        <h1 class="main-game-title">Catch the NUMBA</h1>
+        <div id="modeButtonContainer">
+            <button id="btnModeMolarMass" class="mode-button">Molare Masse</button>
+            <button id="btnModeAtomBau" class="mode-button">Atombau</button>
+        </div>
+        <div id="highscoreColumnsContainer">
+            <div class="highscore-section">
+                <h3>Bestenliste (Molare Masse)</h3>
+                <ul id="molarHighscoreList" class="highscore-list">
+                    <li>Lade...</li>
+                </ul>
+            </div>
+            <div class="highscore-section">
+                <h3>Bestenliste (Atombau)</h3>
+                <ul id="atomHighscoreList" class="highscore-list">
+                    <li>Lade...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameUI" class="hidden">
+        <h1>Catch the NUMBA</h1>
+        <div class="info-bar">
+            <div id="taskLabel">Aufgabe: <span id="taskValue">---</span></div>
+            <div id="scoreDisplay">Punkte: <span id="scoreValue">0</span></div>
+        </div>
+        <div id="gameArea">
+            <div id="canvasContainer">
+                <canvas id="gameCanvas"></canvas>
+                <div id="gameOverScreen" class="hidden">
+                    <h2>Spiel vorbei!</h2>
+                    <p>Endpunktzahl: <span id="finalScore">0</span></p>
+                    <button id="restartButton" class="restart-button">Neustart</button>
+                </div>
+            </div>
+            <div id="controlsAndTimerContainer">
+                <div id="touchControls">
+                    <div style="grid-column: 1; grid-row: 1;"></div>
+                    <button id="btnUp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+                    <div style="grid-column: 3; grid-row: 1;"></div>
+                    <button id="btnLeft"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                    <div id="btnCenter"></div>
+                    <button id="btnRight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+                    <div style="grid-column: 1; grid-row: 3;"></div>
+                    <button id="btnDown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+                    <div style="grid-column: 3; grid-row: 3;"></div>
+                </div>
+                <div id="countdownContainer">
+                    Zeit bis Speed Up: <span id="countdownTimer">15</span>s
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
